@@ -1,10 +1,8 @@
 'use client'
-import { Box, Flex, Button, useDisclosure, useColorModeValue, Stack, useColorMode, Collapse, IconButton, useBreakpointValue, Image, Link } from '@chakra-ui/react'
-import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
+import { Box, Flex, Button, useDisclosure, useColorModeValue, Stack, Collapse, useBreakpointValue, Image, Link, DrawerContent, Drawer, DrawerOverlay, DrawerBody, DrawerCloseButton } from '@chakra-ui/react'
 
 export default function Navbar() {
-    const { colorMode, toggleColorMode } = useColorMode()
-    const { isOpen, onOpen, onClose, onToggle } = useDisclosure()
+    const { isOpen, onToggle, onClose } = useDisclosure()
 
     return (
         <>
@@ -53,7 +51,18 @@ export default function Navbar() {
                         flex={{ md: 'auto' }}
                         display={{ base: 'flex', md: 'none' }}
                     >
-                        <Button onClick={onToggle}>
+                        <Button
+                            onClick={onToggle}
+                            p={0}
+                            borderRadius={50}
+                            width={10}
+                            height={10}
+                            _hover={"none"}
+                            _active={{
+                                transform: "scale(0.97)",
+                                bg: "gray.200"
+                            }}
+                        >
                             <Image src="/menu.svg" alt="Next.js Logo" />
                         </Button>
                     </Flex>
@@ -84,9 +93,45 @@ export default function Navbar() {
                     </Stack>
                 </Flex>
 
-                <Collapse in={isOpen} animateOpacity>
-                    {/* <MobileNav /> */}
-                </Collapse>
+                <Drawer
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    returnFocusOnClose={false}
+                    onOverlayClick={onClose}
+                    size="xs"
+                >
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerBody display={"flex"} flex={1} justifyContent={"center"} alignItems={"center"}>
+                            <Flex display={{ md: 'none' }} flex={1} justifyContent={"center"} alignItems={"center"}>
+                                <Box display={{ base: "flex" }} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
+                                    <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                                        Servicios
+                                    </Button>
+                                    <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                                        Pasos
+                                    </Button>
+                                    <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                                        Nuestro Equipo
+                                    </Button>
+                                    <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                                        Trabajos
+                                    </Button>
+                                    <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                                        Comentarios
+                                    </Button>
+                                    <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                                        Contacto
+                                    </Button>
+                                    <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                                        Blog
+                                    </Button>
+                                </Box>
+                            </Flex>
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
             </Box>
         </>
     )
