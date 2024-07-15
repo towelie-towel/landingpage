@@ -37,6 +37,7 @@ const services = [
 const Service = () => {
     return (
         <Flex
+            as='section'
             flexDirection={"column"}
             mt={{ base: "200px", md: "0px" }}
             gap={"60px"}
