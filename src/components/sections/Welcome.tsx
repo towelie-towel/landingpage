@@ -14,9 +14,9 @@ const float_anim_2 = keyframes`
 
 const Welcome = () => {
     return (
-        <Box width={"100%"} height={"80vh"} position="relative">
+        <Box width={"100%"} height={"90vh"} position="relative">
             <Flex position={"relative"} justifyContent={"center"}
-                mt={{ base: "65px", xl: "80px" }}>
+                mt={{ base: "75px", xl: "90px" }}>
                 <Box
                     minWidth={"320px"}
                     height='173px'
@@ -113,12 +113,6 @@ const Welcome = () => {
                             </Button>
                         </Flex>
                     </VStack>
-                    {/* <Box flex={1} position="relative">
-                        <Image
-                            src='/assets/images/sectionimg/welcome6img1.png'
-                            alt=''
-                        />
-                    </Box> */}
                 </Flex>
             </Container>
 
@@ -143,7 +137,7 @@ const Welcome = () => {
                 <Box
                     position="absolute"
                     height={"auto"}
-                    top={{ base: "10px", sm: "-15px", md: "-40px", xl: "-120px", '2xl': "-120px" }}
+                    top={{ base: "10px", sm: "-25px", md: "-140px", xl: "-180px", '2xl': "-200px" }}
                     right={{ base: "5px", sm: "15px", md: "40px", xl: "60px" }}
                     animation={`${float_anim_2} infinite 10s linear`}
                 >
