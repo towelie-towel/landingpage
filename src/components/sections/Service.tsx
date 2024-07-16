@@ -71,6 +71,7 @@ const Service = () => {
                 {
                     services.map((service) => (
                         <Flex
+                            key={service.title}
                             width={{ base: "45%", md: "28%" }}
                             flexDirection={"column"}
                             alignItems={"center"}

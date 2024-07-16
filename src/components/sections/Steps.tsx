@@ -81,6 +81,7 @@ const Step = () => {
                 {
                     steps.map((step) => (
                         <Flex
+                            key={step.title}
                             flexDirection={step.img.side === "left" ? "row" : "row-reverse"}
                         >
                             <Flex flex={1} alignItems={"center"}>

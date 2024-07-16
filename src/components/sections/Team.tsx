@@ -92,6 +92,7 @@ const Step = () => {
                 {
                     profiles.map((profile) => (
                         <Flex
+                            key={profile.name}
                             width={{ base: "45%", md: "200px" }}
                             flexDirection={"column"}
                             alignItems={"center"}

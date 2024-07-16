@@ -97,12 +97,13 @@ const Welcome = () => {
                             </Button>
                             <Button
                                 as={'a'}
+                                href={'#'}
                                 fontSize={"14px"}
                                 width={"150px"}
                                 color={"gray.800"}
                                 borderRadius={50}
+                                borderColor={"green.200"}
                                 variant={'outline'}
-                                href={'#'}
                                 _hover={{
                                     filter: "brightness(0.9)",
                                     boxShadow: "0 20px 20px #5c5c5c3b",

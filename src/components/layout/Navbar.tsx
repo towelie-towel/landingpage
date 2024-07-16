@@ -75,7 +75,14 @@ export default function Navbar() {
                     direction={'row'}
                     spacing={6}
                 >
-                    <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                    <Button
+                        as={'a'}
+                        href={'#'}
+                        borderRadius={"50px"}
+                        fontSize={"14px"}
+                        color={"gray.800"}
+                        variant={'ghost'}
+                    >
                         Conocer Más
                     </Button>
 
