@@ -1,3 +1,5 @@
+import { Flex } from "@chakra-ui/react";
+
 import Welcome from "@/components/sections/Welcome";
 import Service from "@/components/sections/Service";
 import Steps from "@/components/sections/Steps";
@@ -7,13 +9,12 @@ import Comments from "@/components/sections/Comments";
 import Contact from "@/components/sections/Contact";
 import BackToTop from "@/components/containers/BackToTop";
 
-import styles from "./page.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <Flex as={"main"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"center"} minHeight={"100vh"}>
       <Welcome />
       <Service />
       <Steps />
@@ -23,6 +24,6 @@ export default function Home() {
       <Contact />
 
       <BackToTop />
-    </main>
+    </Flex>
   );
 }
