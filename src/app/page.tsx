@@ -3,6 +3,7 @@ import Service from "@/components/sections/Service";
 import Steps from "@/components/sections/Steps";
 import Team from "@/components/sections/Team";
 import Works from "@/components/sections/Works";
+import Comments from "@/components/sections/Comments";
 
 import styles from "./page.module.css";
 import "slick-carousel/slick/slick.css";
@@ -16,6 +17,7 @@ export default function Home() {
       <Steps />
       <Team />
       <Works />
+      <Comments />
     </main>
   );
 }
