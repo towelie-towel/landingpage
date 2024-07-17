@@ -264,8 +264,9 @@ const Works = () => {
 
     return (
         <Flex
-            w={"100%"}
+            id='works'
             as='section'
+            w={"100%"}
             flexDirection={"column"}
             px={{ base: "25px", md: "112px" }}
             py={{ base: "50px", md: "96px" }}

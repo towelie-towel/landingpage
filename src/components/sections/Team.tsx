@@ -45,9 +45,10 @@ const profiles = [
     },
 ]
 
-const Step = () => {
+const Team = () => {
     return (
         <Flex
+            id='team'
             as='section'
             flexDirection={"column"}
             position={"relative"}
@@ -132,4 +133,4 @@ const Step = () => {
     );
 };
 
-export default Step;
+export default Team;

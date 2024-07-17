@@ -37,6 +37,7 @@ const services = [
 const Service = () => {
     return (
         <Flex
+            id='service'
             as='section'
             flexDirection={"column"}
             mt={{ base: "200px", md: "0px" }}

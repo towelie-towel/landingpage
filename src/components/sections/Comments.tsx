@@ -1,17 +1,14 @@
 'use client'
-import { Flex, VStack, Heading, Text, Image, Button, Box } from '@chakra-ui/react';
-import { useState } from 'react';
-import CommentsCarousel from '../containers/CommentsCarousel';
-
-const comments = [
-]
+import { Flex, VStack, Heading, Text, Button } from '@chakra-ui/react';
+import CommentsCarousel from '@/components/containers/CommentsCarousel';
 
 const Comments = () => {
 
     return (
         <Flex
-            w={"100%"}
+            id='comments'
             as='section'
+            w={"100%"}
             flexDirection={"column"}
             px={{ base: "25px", md: "112px" }}
             py={{ base: "50px", md: "96px" }}

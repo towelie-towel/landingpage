@@ -14,6 +14,7 @@ import {
     GridItem,
     Flex,
 } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { FaXTwitter, FaInstagram, FaYoutube } from "react-icons/fa6";
 import { ReactNode } from 'react'
 
@@ -74,25 +75,116 @@ export default function SmallWithSocial() {
                         gap="12px"
                         flex={1}
                     >
-                        <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                        <Button
+                            as={NextLink}
+                            scroll
+                            borderRadius={"50px"}
+                            transform={"all 0.5s"}
+                            _active={{
+                                transform: "scale(0.97)",
+                                backgroundColor: "gray.200"
+                            }}
+                            fontSize={"14px"}
+                            color={"gray.800"}
+                            variant={'ghost'}
+                            href={'/#service'}
+                        >
                             Servicios
                         </Button>
-                        <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                        <Button
+                            as={NextLink}
+                            scroll
+                            borderRadius={"50px"}
+                            transform={"all 0.5s"}
+                            _active={{
+                                transform: "scale(0.97)",
+                                backgroundColor: "gray.200"
+                            }}
+                            fontSize={"14px"}
+                            color={"gray.800"}
+                            variant={'ghost'}
+                            href={'/#steps'}
+                        >
                             Pasos
                         </Button>
-                        <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                        <Button
+                            as={NextLink}
+                            scroll
+                            borderRadius={"50px"}
+                            transform={"all 0.5s"}
+                            _active={{
+                                transform: "scale(0.97)",
+                                backgroundColor: "gray.200"
+                            }}
+                            fontSize={"14px"}
+                            color={"gray.800"}
+                            variant={'ghost'}
+                            href={'/#team'}
+                        >
                             Nuestro Equipo
                         </Button>
-                        <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                        <Button
+                            as={NextLink}
+                            scroll
+                            borderRadius={"50px"}
+                            transform={"all 0.5s"}
+                            _active={{
+                                transform: "scale(0.97)",
+                                backgroundColor: "gray.200"
+                            }}
+                            fontSize={"14px"}
+                            color={"gray.800"}
+                            variant={'ghost'}
+                            href={'/#works'}
+                        >
                             Trabajos
                         </Button>
-                        <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                        <Button
+                            as={NextLink}
+                            scroll
+                            borderRadius={"50px"}
+                            transform={"all 0.5s"}
+                            _active={{
+                                transform: "scale(0.97)",
+                                backgroundColor: "gray.200"
+                            }}
+                            fontSize={"14px"}
+                            color={"gray.800"}
+                            variant={'ghost'}
+                            href={'/#comments'}
+                        >
                             Comentarios
                         </Button>
-                        <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                        <Button
+                            as={NextLink}
+                            scroll
+                            borderRadius={"50px"}
+                            transform={"all 0.5s"}
+                            _active={{
+                                transform: "scale(0.97)",
+                                backgroundColor: "gray.200"
+                            }}
+                            fontSize={"14px"}
+                            color={"gray.800"}
+                            variant={'ghost'}
+                            href={'/#contact'}
+                        >
                             Contacto
                         </Button>
-                        <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                        <Button
+                            as={NextLink}
+                            scroll
+                            borderRadius={"50px"}
+                            transform={"all 0.5s"}
+                            _active={{
+                                transform: "scale(0.97)",
+                                backgroundColor: "gray.200"
+                            }}
+                            fontSize={"14px"}
+                            color={"gray.800"}
+                            variant={'ghost'}
+                            href={'/blog'}
+                        >
                             Blog
                         </Button>
                     </Flex>
@@ -121,51 +213,3 @@ export default function SmallWithSocial() {
         </footer>
     )
 }
-
-/* 
-    footer grid nav
-
-    <Grid
-        flex={1}
-        justifyContent={"center"}
-        templateColumns={{ base: 'repeat(5, 1fr)', md: 'repeat(5, 2fr)' }}
-        h='92px'
-        gap='12px'
-    >
-        <GridItem>
-            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
-                Servicios
-            </Button>
-        </GridItem>
-        <GridItem>
-            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
-                Pasos
-            </Button>
-        </GridItem>
-        <GridItem>
-            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
-                Nuestro Equipo
-            </Button>
-        </GridItem>
-        <GridItem>
-            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
-                Trabajos
-            </Button>
-        </GridItem>
-        <GridItem>
-            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
-                Comentarios
-            </Button>
-        </GridItem>
-        <GridItem>
-            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
-                Contacto
-            </Button>
-        </GridItem>
-        <GridItem>
-            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
-                Blog
-            </Button>
-        </GridItem>
-    </Grid>
-*/

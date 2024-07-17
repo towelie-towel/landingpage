@@ -1,5 +1,6 @@
 'use client'
 import { Box, Flex, Button, useDisclosure, Stack, useBreakpointValue, Image, Link, DrawerContent, Drawer, DrawerOverlay, DrawerBody, DrawerCloseButton } from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 export default function Navbar() {
     const { isOpen, onToggle, onClose } = useDisclosure()
@@ -23,25 +24,116 @@ export default function Navbar() {
 
                     <Flex display={useBreakpointValue({ base: 'none', md: 'flex' })} flex={1} justifyContent={"center"}>
                         <Box display={{ base: "flex" }} flexDirection={"row"} alignItems={"center"}>
-                            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                            <Button
+                                as={NextLink}
+                                scroll
+                                borderRadius={"50px"}
+                                transform={"all 0.5s"}
+                                _active={{
+                                    transform: "scale(0.97)",
+                                    backgroundColor: "gray.200"
+                                }}
+                                fontSize={"14px"}
+                                color={"gray.800"}
+                                variant={'ghost'}
+                                href={'/#service'}
+                            >
                                 Servicios
                             </Button>
-                            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                            <Button
+                                as={NextLink}
+                                scroll
+                                borderRadius={"50px"}
+                                transform={"all 0.5s"}
+                                _active={{
+                                    transform: "scale(0.97)",
+                                    backgroundColor: "gray.200"
+                                }}
+                                fontSize={"14px"}
+                                color={"gray.800"}
+                                variant={'ghost'}
+                                href={'/#steps'}
+                            >
                                 Pasos
                             </Button>
-                            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                            <Button
+                                as={NextLink}
+                                scroll
+                                borderRadius={"50px"}
+                                transform={"all 0.5s"}
+                                _active={{
+                                    transform: "scale(0.97)",
+                                    backgroundColor: "gray.200"
+                                }}
+                                fontSize={"14px"}
+                                color={"gray.800"}
+                                variant={'ghost'}
+                                href={'/#team'}
+                            >
                                 Nuestro Equipo
                             </Button>
-                            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                            <Button
+                                as={NextLink}
+                                scroll
+                                borderRadius={"50px"}
+                                transform={"all 0.5s"}
+                                _active={{
+                                    transform: "scale(0.97)",
+                                    backgroundColor: "gray.200"
+                                }}
+                                fontSize={"14px"}
+                                color={"gray.800"}
+                                variant={'ghost'}
+                                href={'/#works'}
+                            >
                                 Trabajos
                             </Button>
-                            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                            <Button
+                                as={NextLink}
+                                scroll
+                                borderRadius={"50px"}
+                                transform={"all 0.5s"}
+                                _active={{
+                                    transform: "scale(0.97)",
+                                    backgroundColor: "gray.200"
+                                }}
+                                fontSize={"14px"}
+                                color={"gray.800"}
+                                variant={'ghost'}
+                                href={'/#comments'}
+                            >
                                 Comentarios
                             </Button>
-                            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                            <Button
+                                as={NextLink}
+                                scroll
+                                borderRadius={"50px"}
+                                transform={"all 0.5s"}
+                                _active={{
+                                    transform: "scale(0.97)",
+                                    backgroundColor: "gray.200"
+                                }}
+                                fontSize={"14px"}
+                                color={"gray.800"}
+                                variant={'ghost'}
+                                href={'/#contact'}
+                            >
                                 Contacto
                             </Button>
-                            <Button as={'a'} fontSize={"14px"} color={"gray.800"} variant={'ghost'} href={'#'}>
+                            <Button
+                                as={NextLink}
+                                scroll
+                                borderRadius={"50px"}
+                                transform={"all 0.5s"}
+                                _active={{
+                                    transform: "scale(0.97)",
+                                    backgroundColor: "gray.200"
+                                }}
+                                fontSize={"14px"}
+                                color={"gray.800"}
+                                variant={'ghost'}
+                                href={'/blog'}
+                            >
                                 Blog
                             </Button>
                         </Box>
@@ -77,7 +169,7 @@ export default function Navbar() {
                 >
                     <Button
                         as={'a'}
-                        href={'#'}
+                        href={'https://wa.me/+5358477311?text=Hola que tal, me gustaría conocer más sobre NOX.'}
                         borderRadius={"50px"}
                         fontSize={"14px"}
                         color={"gray.800"}
@@ -88,7 +180,7 @@ export default function Navbar() {
 
                     <Button
                         as={'a'}
-                        href={'#'}
+                        href={'https://wa.me/+5358477311?text=Hola que tal, estoy interesado en sus trabajos.'}
                         width={"150px"}
                         display={useBreakpointValue({ base: 'none', xl: 'inline-flex' })}
                         fontSize={'14px'}

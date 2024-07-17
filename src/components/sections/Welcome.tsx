@@ -14,7 +14,7 @@ const float_anim_2 = keyframes`
 
 const Welcome = () => {
     return (
-        <Box as='section' width={"100%"} height={"90vh"} position="relative">
+        <Box id='welcome' as='section' width={"100%"} height={"90vh"} position="relative">
             <Flex position={"relative"} justifyContent={"center"}
                 mt={{ base: "75px", xl: "90px" }}>
                 <Box

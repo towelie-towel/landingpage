@@ -37,6 +37,7 @@ const steps = [
 const Step = () => {
     return (
         <Flex
+            id='steps'
             as='section'
             flexDirection={"column"}
             position={"relative"}
