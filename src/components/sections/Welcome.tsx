@@ -53,7 +53,9 @@ const Welcome = () => {
                     />
                 </Box>
             </Flex>
-            <Container centerContent maxW="container.xl" px={{ base: "25px", xl: "0px" }}>
+            <Container centerContent maxW="container.xl" px={{ base: "25px", xl: "0px" }}
+                position={"relative"}
+                zIndex={50}>
                 <Flex direction={{ base: 'column', lg: 'row' }} width={{ base: "100%", md: "60vh" }} textAlign="center">
                     <VStack
                         align="center"
@@ -104,6 +106,7 @@ const Welcome = () => {
                                 borderRadius={50}
                                 borderColor={"green.200"}
                                 variant={'outline'}
+                                bg={"white"}
                                 _hover={{
                                     filter: "brightness(0.9)",
                                     boxShadow: "0 20px 20px #5c5c5c3b",

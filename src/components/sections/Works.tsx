@@ -1,6 +1,7 @@
 'use client'
-import { Flex, VStack, Heading, Text, Image, Button, Link } from '@chakra-ui/react';
+import { Flex, VStack, Heading, Text, Image, Button, Box } from '@chakra-ui/react';
 import { useState } from 'react';
+import YoutubeCarousel from '../containers/YoutubeCarousel';
 
 const works = [
     {
@@ -263,170 +264,201 @@ const Works = () => {
 
     return (
         <Flex
+            w={"100%"}
             as='section'
             flexDirection={"column"}
-            gap={"50px"}
             px={{ base: "25px", md: "112px" }}
             py={{ base: "50px", md: "96px" }}
+            gap={"50px"}
         >
-            <VStack
-                align="center"
-                gap={2}
-                flex={1}
-                width={{}}
-            >
-                <Heading
-                    as="h1"
-                    fontSize={{ base: '25px', sm: "20px", md: '35px' }}
-                    lineHeight={{ base: '1.33', md: '1.2' }}
-                    fontWeight={"bold"}
-                    fontFamily={"heading"}
-                >
-                    Selección de trabajos
-                </Heading>
-                <Text fontSize={{ base: "13px", md: "16px" }}>
-                    Esta es una muestra de trabajos que hemos realizados
-                </Text>
-            </VStack>
             <Flex
                 flexDirection={"column"}
                 gap={"50px"}
             >
-                <Flex
-                    gap={5}
-                    justifyContent={"center"}
-                    flexFlow={"wrap"}
+                <VStack
+                    align="center"
+                    gap={2}
                 >
-                    {
-                        works.reduce((acc, obj) => {
-                            // @ts-ignore
-                            if (obj.category && !acc.includes(obj.category)) acc.push(obj.category);
-                            return acc;
-                        }, []).map((category) => (
-                            <Button
-                                key={category}
-                                onClick={() => {
-                                    setSelectedCategory(category);
-                                }}
-                                bg={selectedCategory === category ? 'green.200' : "transparent"}
-                                color={selectedCategory === category ? 'white' : undefined}
-                                fontSize={'14px'}
-                                fontWeight={600}
-                                borderRadius={50}
-                                height={10}
-                                minWidth={10}
-                                px={4}
-                                transition={"all 0.5s"}
-                                _hover={selectedCategory === category ? {
-                                    bg: 'green.200',
-                                    filter: "brightness(0.9)",
-                                    boxShadow: "0 20px 50px #5c5c5c3b",
-                                    transition: "All 0.5s"
-                                } : {}}
-                                _active={{
-                                    transform: "scale(0.97)",
-                                    background: "gray.200"
-                                }}
-                            >
-                                {category}
-                            </Button>
-                        ))
-                    }
-                </Flex>
+                    <Heading
+                        as="h1"
+                        fontSize={{ base: '25px', sm: "20px", md: '35px' }}
+                        lineHeight={{ base: '1.33', md: '1.2' }}
+                        fontWeight={"bold"}
+                        fontFamily={"heading"}
+                    >
+                        Selección de trabajos
+                    </Heading>
+                    <Text fontSize={{ base: "13px", md: "16px" }}>
+                        Esta es una muestra de trabajos que hemos realizados
+                    </Text>
+                </VStack>
                 <Flex
-                    flexFlow={"wrap"}
-                    justifyContent={"center"}
-                    gap={{ base: "20px", md: "64px" }}
+                    flexDirection={"column"}
+                    gap={"50px"}
                 >
-                    {
-                        works.filter(work => work.category === selectedCategory).map((work, i) => (
-                            <Flex
-                                key={i}
-                                flexDirection={"column"}
-                            >
-                                <Flex
-                                    bg={work.bg ? work.bg : "#4f4f4f"}
-                                    width={{ base: "150px", md: "230px" }}
-                                    height={{ base: "100px", md: "230px" }}
-                                    flexDirection={"column"}
-                                    alignItems={"center"}
-                                    justifyContent={"center"}
-                                    textAlign={"center"}
-                                    borderRadius={"8px"}
-                                    boxShadow={"0 20px 50px #5c5c5c3b"}
-                                    overflow={"hidden"}
-                                    position={"relative"}
-                                    cursor={"pointer"}
+                    <Flex
+                        gap={5}
+                        justifyContent={"center"}
+                        flexFlow={"wrap"}
+                    >
+                        {
+                            works.reduce((acc, obj) => {
+                                // @ts-ignore
+                                if (obj.category && !acc.includes(obj.category)) acc.push(obj.category);
+                                return acc;
+                            }, []).map((category) => (
+                                <Button
+                                    key={category}
+                                    onClick={() => {
+                                        setSelectedCategory(category);
+                                    }}
+                                    bg={selectedCategory === category ? 'green.200' : "transparent"}
+                                    color={selectedCategory === category ? 'white' : undefined}
+                                    fontSize={'14px'}
+                                    fontWeight={600}
+                                    borderRadius={50}
+                                    height={10}
+                                    minWidth={10}
+                                    px={4}
                                     transition={"all 0.5s"}
-                                    _hover={{
-                                        transform: "scale(1.1)",
-                                        transition: "all 0.5s"
+                                    _hover={selectedCategory === category ? {
+                                        bg: 'green.200',
+                                        filter: "brightness(0.9)",
+                                        boxShadow: "0 20px 50px #5c5c5c3b",
+                                        transition: "All 0.5s"
+                                    } : {}}
+                                    _active={{
+                                        transform: "scale(0.97)",
+                                        background: "gray.200"
                                     }}
                                 >
-                                    <Image
-                                        height={"149px"}
-                                        src={work.img}
-                                        alt=''
-                                    />
+                                    {category}
+                                </Button>
+                            ))
+                        }
+                    </Flex>
+                    <Flex
+                        flexFlow={"wrap"}
+                        justifyContent={"center"}
+                        gap={{ base: "20px", md: "50px" }}
+                    >
+                        {
+                            works.filter(work => work.category === selectedCategory).map((work, i) => (
+                                <Flex
+                                    key={i}
+                                    flexDirection={"column"}
+                                >
+                                    <Flex
+                                        bg={work.bg ? work.bg : "#4f4f4f"}
+                                        width={{ base: "150px", md: "230px" }}
+                                        height={{ base: "100px", md: "230px" }}
+                                        flexDirection={"column"}
+                                        alignItems={"center"}
+                                        justifyContent={"center"}
+                                        textAlign={"center"}
+                                        borderRadius={"8px"}
+                                        boxShadow={"0 20px 50px #5c5c5c3b"}
+                                        overflow={"hidden"}
+                                        position={"relative"}
+                                        cursor={"pointer"}
+                                        transition={"all 0.5s"}
+                                        _hover={{
+                                            transform: "scale(1.1)",
+                                            transition: "all 0.5s"
+                                        }}
+                                    >
+                                        <Image
+                                            height={"149px"}
+                                            src={work.img}
+                                            alt=''
+                                        />
+                                        <Heading
+                                            as="h6"
+                                            display={{ base: "none", md: "initial" }}
+                                            fontSize={{ base: 'sm', md: 'xl' }}
+                                            lineHeight={{ md: '1.2' }}
+                                            fontWeight={"bold"}
+                                            fontFamily={"heading"}
+                                            mt={4}
+                                            color={"white"}
+                                        >
+                                            {work.title}
+                                        </Heading>
+                                    </Flex>
                                     <Heading
-                                        as="h6"
-                                        display={{ base: "none", md: "initial" }}
+                                        as="h2"
+                                        display={{ base: "initial", md: "none" }}
                                         fontSize={{ base: 'sm', md: 'xl' }}
                                         lineHeight={{ md: '1.2' }}
                                         fontWeight={"bold"}
+                                        color={"#3d3d3d"}
                                         fontFamily={"heading"}
-                                        mt={4}
-                                        color={"white"}
+                                        mt={2}
+                                        textAlign={"center"}
                                     >
                                         {work.title}
                                     </Heading>
                                 </Flex>
-                                <Heading
-                                    as="h2"
-                                    display={{ base: "initial", md: "none" }}
-                                    fontSize={{ base: 'sm', md: 'xl' }}
-                                    lineHeight={{ md: '1.2' }}
-                                    fontWeight={"bold"}
-                                    color={"#3d3d3d"}
-                                    fontFamily={"heading"}
-                                    mt={2}
-                                    textAlign={"center"}
-                                >
-                                    {work.title}
-                                </Heading>
-                            </Flex>
-                        ))
-                    }
+                            ))
+                        }
+                    </Flex>
                 </Flex>
+                <Button
+                    alignSelf={"center"}
+                    as={'a'}
+                    href={'https://wa.me/+5358477311?text=Hola que tal, me interesa colaborar con ustedes'}
+                    minWidth={10}
+                    width={"250px"}
+                    height={10}
+                    display={"inline-flex"}
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    fontSize={'14px'}
+                    lineHeight={"1.2"}
+                    fontWeight={600}
+                    transition={"all 0.5s"}
+                    color={'white'}
+                    bg={'green.200'}
+                    borderRadius={50}
+                    px={4}
+                    boxShadow={"0 20px 50px #5c5c5c3b"}
+                    _hover={{
+                        bg: 'green.200',
+                        filter: "brightness(0.9)",
+                        boxShadow: "0 20px 20px #5c5c5c3b",
+                        transition: "All 0.5s"
+                    }}
+                >
+                    Me interesa colaborar
+                </Button>
             </Flex>
-            <Button
-                alignSelf={"center"}
-                as={'a'}
-                href={'https://wa.me/+5358477311?text=Hola que tal, me interesa colaborar con ustedes'}
-                minWidth={10}
-                width={"250px"}
-                height={10}
-                display={"inline-flex"}
-                alignItems={"center"}
-                justifyContent={"center"}
-                fontSize={'14px'}
-                lineHeight={"1.2"}
-                fontWeight={600}
-                transition={"all 0.5s"}
-                color={'white'}
-                bg={'green.200'}
-                borderRadius={50}
-                px={4}
-                boxShadow={"0 20px 50px #5c5c5c3b"}
-                _hover={{
-                    bg: 'green.200',
-                    filter: "brightness(0.9)",
-                    boxShadow: "0 20px 20px #5c5c5c3b",
-                    transition: "All 0.5s"
-                }}
+
+            <Flex
+                flexDirection={"column"}
+                minHeight={"100vh"}
+                w={"100%"}
             >
-                Me interesa colaborar
-            </Button>
+                <VStack
+                    w={"100%"}
+                    maxW={"100%"}
+                    mx={"auto"}
+                    px={4}
+                    py={10}
+                >
+                    <Heading
+                        as="h1"
+                        fontSize={{ base: '3xl', md: '4xl' }}
+                        lineHeight={{ base: '1.33', md: '1.2' }}
+                        fontWeight={"bold"}
+                        fontFamily={"heading"}
+                        textAlign={"center"}
+                    >
+                        Nuestro Canal de Youtube
+                    </Heading>
+                </VStack>
+
+                <YoutubeCarousel />
+            </Flex>
         </Flex>
     );
 };

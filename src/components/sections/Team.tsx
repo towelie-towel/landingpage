@@ -80,6 +80,7 @@ const Step = () => {
                     lineHeight={{ base: '1.33', md: '1.2' }}
                     fontWeight={"bold"}
                     color="gray.800"
+                    textAlign={"center"}
                 >
                     El equipo creativo detrás de la puerta
                 </Heading>

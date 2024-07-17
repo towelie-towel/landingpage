@@ -3,7 +3,10 @@ import Service from "@/components/sections/Service";
 import Steps from "@/components/sections/Steps";
 import Team from "@/components/sections/Team";
 import Works from "@/components/sections/Works";
+
 import styles from "./page.module.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
   return (
