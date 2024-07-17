@@ -5,6 +5,7 @@ import Team from "@/components/sections/Team";
 import Works from "@/components/sections/Works";
 import Comments from "@/components/sections/Comments";
 import Contact from "@/components/sections/Contact";
+import BackToTop from "@/components/containers/BackToTop";
 
 import styles from "./page.module.css";
 import "slick-carousel/slick/slick.css";
@@ -20,6 +21,8 @@ export default function Home() {
       <Works />
       <Comments />
       <Contact />
+
+      <BackToTop />
     </main>
   );
 }
