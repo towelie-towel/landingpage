@@ -47,7 +47,7 @@ export default function Carousel() {
             <Box w={"100%"} overflow={"hidden"}>
                 <Slider {...settings} ref={(slider) => setSlider(slider)}>
                     {comments.map((comment, index) => (
-                        <Flex>
+                        <Flex key={index}>
                             <Box w={"100%"}>
                                 <Flex
                                     key={index}

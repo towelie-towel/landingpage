@@ -17,6 +17,7 @@ import {
 import NextLink from 'next/link'
 import { FaXTwitter, FaInstagram, FaYoutube } from "react-icons/fa6";
 import { ReactNode } from 'react'
+import { usePathname } from 'next/navigation'
 
 const SocialButton = ({
     children,
@@ -46,6 +47,7 @@ const SocialButton = ({
 }
 
 export default function SmallWithSocial() {
+    const path = usePathname()
     return (
         <footer>
             <Box
@@ -181,7 +183,7 @@ export default function SmallWithSocial() {
                                 backgroundColor: "gray.200"
                             }}
                             fontSize={"14px"}
-                            color={"gray.800"}
+                            color={path.includes("blog") ? "green.200" : "gray.800"}
                             variant={'ghost'}
                             href={'/blog'}
                         >

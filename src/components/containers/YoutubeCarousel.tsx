@@ -133,6 +133,7 @@ export default function YoutubeCarousel() {
                     {
                         videos.map((_, i) => (
                             <Button
+                                key={i}
                                 onClick={() => {
                                     slider?.slickGoTo(i)
                                 }}

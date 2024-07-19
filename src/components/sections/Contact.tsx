@@ -8,8 +8,9 @@ const Contact = () => {
             id="contact"
             as='section'
             flexDirection={{ base: "column", md: "row" }}
+            width={"100%"}
         >
-            <iframe loading='lazy' src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1091.1460806470911!2d-82.38725352754689!3d23.091116820951388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scu!4v1711133515224!5m2!1ses!2scu" ></iframe>
+            <iframe style={{ flex: 1 }} loading='lazy' src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1091.1460806470911!2d-82.38725352754689!3d23.091116820951388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scu!4v1711133515224!5m2!1ses!2scu" ></iframe>
             <Flex
                 flex={2}
                 flexDirection={"column"}

@@ -1,20 +1,22 @@
 'use client'
 import { Box, Flex, Button, useDisclosure, Stack, useBreakpointValue, Image, Link, DrawerContent, Drawer, DrawerOverlay, DrawerBody, DrawerCloseButton } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
     const { isOpen, onToggle, onClose } = useDisclosure()
+    const path = usePathname()
 
     return (
         <nav>
             <Flex
                 className='navbar-container'
-                bg={'white'}
                 color={"gray.600"}
                 minH={'60px'}
                 align={'center'}
                 padding={"25px"}
                 px={{ md: "64px", xl: "114px" }}
+                bg={"linear-gradient(180deg, rgba(240, 250, 244, 1) 0%, rgba(243, 251, 246, 0.8) 50%, transparent)"}
             >
 
                 <Flex flex={{ base: 1 }} justify={{ base: 'start' }}>
@@ -130,7 +132,7 @@ export default function Navbar() {
                                     backgroundColor: "gray.200"
                                 }}
                                 fontSize={"14px"}
-                                color={"gray.800"}
+                                color={path.includes("blog") ? "green.200" : "gray.800"}
                                 variant={'ghost'}
                                 href={'/blog'}
                             >
@@ -148,6 +150,7 @@ export default function Navbar() {
                         onClick={onToggle}
                         p={0}
                         borderRadius={50}
+                        bg={"transparent"}
                         width={10}
                         height={10}
                         _hover={{}}
