@@ -12,7 +12,7 @@ import BackToTop from "@/components/containers/BackToTop";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <Flex as={"main"} flexDirection={"column"} justifyContent={"space-between"} alignItems={"center"} minHeight={"100vh"}>
       <Welcome />

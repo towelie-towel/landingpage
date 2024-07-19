@@ -1,12 +1,13 @@
 'use client'
-import { useRouter } from 'next/navigation';
-import { Box, Flex, Text, Badge, Heading } from '@chakra-ui/react';
+import { Box, Flex, Text, Badge, Heading, Image } from '@chakra-ui/react';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 import { blogs } from '@/components/sections/Blog';
 
-const Article = ({ slug }: { slug: string }) => {
+const Article = ({ slug, prev = false }: { slug: string, prev?: boolean }) => {
+    console.log(prev)
 
-    const router = useRouter()
     const blogArticle = blogs.find(blog => blog.slug === slug)
 
     if (!blogArticle) {
@@ -28,13 +29,21 @@ const Article = ({ slug }: { slug: string }) => {
                     width={"auto"}
                     gap={8}
                 >
-                    <Flex
+                    <Box
                         height={{ base: "200px", md: "530px" }}
-                        position={"relative"}
-                        backgroundSize={"cover"}
-                        background={blogArticle?.img}
+                        position="relative"
+                        overflow="hidden"
+                        style={{
+                            viewTransitionName: prev ? `blog-img-prev-${blogArticle?.slug}` : `blog-img-${blogArticle?.slug}`
+                        }}
                     >
-                    </Flex>
+                        <Image
+                            src={blogArticle?.img}
+                            alt={blogArticle?.title || "Blog article image"}
+                            objectFit="cover"
+                            width={"-webkit-fill-available"}
+                        />
+                    </Box>
 
                     <Flex >
                         <Flex
@@ -62,16 +71,14 @@ const Article = ({ slug }: { slug: string }) => {
                         </Flex>
                     </Flex>
 
-                    <Box as='span'>
-                        <Text
-                            color={"#7B7B7B"}
-                            fontSize="18px"
-                            fontWeight={100}
-                            height="auto"
-                            dangerouslySetInnerHTML={{ __html: blogArticle.html }}
-                        >
-
-                        </Text>
+                    <Box
+                        as='span'
+                        color={"#7B7B7B"}
+                        fontSize="18px"
+                        fontWeight={100}
+                        height="auto"
+                    >
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{blogArticle.html}</ReactMarkdown>
                     </Box>
                 </Flex>
             </Box>
@@ -104,9 +111,8 @@ const Article = ({ slug }: { slug: string }) => {
                             blogs.slice(0, 2).map((blog, i) => (
                                 <Flex
                                     key={i}
-                                    onClick={() => {
-                                        router.push(`/blog/${blog.slug}`)
-                                    }}
+                                    as={"a"}
+                                    href={`/blog/${blog.slug}`}
                                     w={{ base: "100%", md: "calc(-114.667px + 33.3333vw)" }}
                                     gap={8}
                                     cursor={"pointer"}
@@ -117,14 +123,25 @@ const Article = ({ slug }: { slug: string }) => {
                                         transition: "all 0.5s ease 0s"
                                     }}
                                 >
-                                    <Flex
+                                    <Box
                                         display={"flex"}
                                         height={"200px"}
                                         w={{ base: "100%", md: "calc(-114.667px + 33.3333vw)" }}
                                         width={"auto"}
                                         position={"relative"}
-                                        background={blog.img}
-                                    ></Flex>
+                                        overflow={"hidden"}
+                                    /* style={{
+                                        viewTransitionName: `blog-img-${blog.slug}`
+                                    }} */
+                                    >
+                                        <Image
+                                            src={blog.img}
+                                            alt={blog.title || "Blog article image"}
+                                            objectFit="cover"
+                                            width={"-webkit-fill-available"}
+                                        />
+                                    </Box>
+
                                     <Flex
                                         flexDirection={"column"}
                                         gap={4}
