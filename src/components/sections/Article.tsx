@@ -42,6 +42,7 @@ const Article = ({ slug, prev = false }: { slug: string, prev?: boolean }) => {
                             alt={blogArticle?.title || "Blog article image"}
                             objectFit="cover"
                             width={"-webkit-fill-available"}
+                            height={"-webkit-fill-available"}
                         />
                     </Box>
 
@@ -139,6 +140,7 @@ const Article = ({ slug, prev = false }: { slug: string, prev?: boolean }) => {
                                             alt={blog.title || "Blog article image"}
                                             objectFit="cover"
                                             width={"-webkit-fill-available"}
+                                            height={"-webkit-fill-available"}
                                         />
                                     </Box>
 

@@ -1,7 +1,7 @@
 'use client'
 import { Box, Heading, Flex, Text, Badge, Select, Button, Image } from '@chakra-ui/react';
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { capitalizeFirstLetter } from '@/utils';
@@ -79,10 +79,18 @@ const Blog = () => {
     const router = useRouter()
     const [currentPage, setCurrentPage] = useState(1);
     const [tagFilter, setTagFilter] = useState("todos")
+    const [loading, setLoading] = useState(true)
 
     const filteredBlogs = tagFilter === "todos" ? blogs : blogs.filter(blog => blog.tags.includes(tagFilter))
 
     const maxPages = Math.ceil(filteredBlogs.length / 6)
+
+    useEffect(() => {
+        console.log("loaded")
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000)
+    }, [])
 
     const handleGoToPage = useCallback((page: number) => {
         if (page < 1 || page > maxPages) {
@@ -118,13 +126,20 @@ const Blog = () => {
                 </Heading>
             </Flex>
 
-            <Flex gap={8} flexDirection={{ base: "column", md: "row" }}>
+            <Flex
+                gap={8}
+                flexDirection={{ base: "column", md: "row" }}
+            >
                 <Flex
                     flex={"1 1 0%"}
                     flexDirection={"column"}
                     gap={8}
                 >
-                    <Box>
+                    <Box
+                        transition={"all 0.5s ease-in-out"}
+                        transform={loading ? "translateX(-100px) translateY(100px) translateZ(100px)" : "translateX(0px) translateY(0px) translateZ(0px)"}
+                        opacity={loading ? 0 : 1}
+                    >
                         <Flex
                             as={"a"}
                             href={`/blog/${blogs[0].slug}?prev=true`}
@@ -153,6 +168,7 @@ const Blog = () => {
                                     alt={blogs[0].title || "Blog article image"}
                                     objectFit="cover"
                                     width={"-webkit-fill-available"}
+                                    height={"-webkit-fill-available"}
                                 />
                             </Box>
                             <Flex
@@ -183,63 +199,126 @@ const Blog = () => {
                     flexDirection={"column"}
                     gap={8}
                 >
-                    {
-                        blogs.slice(1, 3).map(blog => (
-                            <Box key={blog.slug}>
-                                <Flex
-                                    as={"a"}
-                                    href={`/blog/${blog.slug}?prev=true`}
-                                    flexDirection={{ base: "column", md: "row" }}
-                                    width={"auto"}
-                                    gap={4}
-                                    cursor={"pointer"}
-                                    transition={"all 0.5s ease 0s"}
-                                    _hover={{
-                                        transform: "scale(1.05)",
-                                        transition: "all 0.5s ease 0s"
-                                    }}
-                                >
-                                    <Box
-                                        flex={{ md: "1 1 0%" }}
-                                        height={"200px"}
-                                        position={"relative"}
-                                        overflow={"hidden"}
-                                        style={{
-                                            viewTransitionName: `blog-img-prev-${blog.slug}`
-                                        }}
-                                    >
-                                        <Image
-                                            src={blog.img}
-                                            alt={blog.title || "Blog article image"}
-                                            objectFit="cover"
-                                            width={"-webkit-fill-available"}
-                                        />
-                                    </Box>
-
-                                    <Flex
-                                        flex={{ md: "1 1 0%" }}
-                                        flexDir={"column"}
-                                        gap={4}
-                                        position={"relative"}
-                                    >
-                                        <Flex
-                                            flexDirection={"column"}
-                                            gap={2}
-                                        >
-                                            <Text fontSize={"18px"} fontWeight={600} color={"black"}>{blog.title}</Text>
-                                            <Text fontSize={"16px"} fontWeight={400} height={"95px"} overflow={"hidden"} color={"rgb(123, 123, 123)"}>{blog.description}</Text>
-                                        </Flex>
-                                        <Flex gap={3} flexWrap={"wrap"}>
-                                            {
-                                                blog.tags.map(tag => (
-                                                    <Badge key={tag} textTransform={"none"} px={1} fontSize={"14px"} fontWeight={"bold"} color={"primary.200"} borderRadius={"20px"} p={"3px 15px"}>{tag}</Badge>
-                                                ))
-                                            }</Flex>
-                                    </Flex>
-                                </Flex>
+                    <Box
+                        transition={"all 0.5s ease-in-out"}
+                        transform={loading ? "translateX(100px) translateY(100px) translateZ(-100px)" : "translateX(0px) translateY(0px) translateZ(0px)"}
+                        opacity={loading ? 0 : 1}
+                    >
+                        <Flex
+                            as={"a"}
+                            href={`/blog/${blogs[1].slug}?prev=true`}
+                            flexDirection={{ base: "column", md: "row" }}
+                            width={"auto"}
+                            gap={4}
+                            cursor={"pointer"}
+                            transition={"all 0.5s ease 0s"}
+                            _hover={{
+                                transform: "scale(1.05)",
+                                transition: "all 0.5s ease 0s"
+                            }}
+                        >
+                            <Box
+                                flex={{ md: 1 }}
+                                height={"200px"}
+                                width={{ md: "200px" }}
+                                position={"relative"}
+                                overflow={"hidden"}
+                                style={{
+                                    viewTransitionName: `blog-img-prev-${blogs[1].slug}`
+                                }}
+                            >
+                                <Image
+                                    src={blogs[1].img}
+                                    alt={blogs[1].title || "Blog article image"}
+                                    objectFit="cover"
+                                    width={"-webkit-fill-available"}
+                                    height={"-webkit-fill-available"}
+                                />
                             </Box>
-                        ))
-                    }
+
+                            <Flex
+                                flex={{ md: "1 1 0%" }}
+                                flexDir={"column"}
+                                gap={4}
+                                position={"relative"}
+                            >
+                                <Flex
+                                    flexDirection={"column"}
+                                    gap={2}
+                                >
+                                    <Text fontSize={"18px"} fontWeight={600} color={"black"}>{blogs[1].title}</Text>
+                                    <Text fontSize={"16px"} fontWeight={400} height={"95px"} overflow={"hidden"} color={"rgb(123, 123, 123)"}>{blogs[1].description}</Text>
+                                </Flex>
+                                <Flex gap={3} flexWrap={"wrap"}>
+                                    {
+                                        blogs[1].tags.map(tag => (
+                                            <Badge key={tag} textTransform={"none"} px={1} fontSize={"14px"} fontWeight={"bold"} color={"primary.200"} borderRadius={"20px"} p={"3px 15px"}>{tag}</Badge>
+                                        ))
+                                    }
+                                </Flex>
+                            </Flex>
+                        </Flex>
+                    </Box>
+                    <Box
+                        transition={"all 0.5s ease-in-out"}
+                        transform={loading ? "translateX(100px) translateY(100px) translateZ(-100px)" : "translateX(0px) translateY(0px) translateZ(0px)"}
+                        opacity={loading ? 0 : 1}
+                    >
+                        <Flex
+                            as={"a"}
+                            href={`/blog/${blogs[2].slug}?prev=true`}
+                            flexDirection={{ base: "column", md: "row" }}
+                            width={"auto"}
+                            gap={4}
+                            cursor={"pointer"}
+                            transition={"all 0.5s ease 0s"}
+                            _hover={{
+                                transform: "scale(1.05)",
+                                transition: "all 0.5s ease 0s"
+                            }}
+                        >
+                            <Box
+                                flex={{ md: 1 }}
+                                height={"200px"}
+                                width={{ md: "200px" }}
+                                position={"relative"}
+                                overflow={"hidden"}
+                                style={{
+                                    viewTransitionName: `blog-img-prev-${blogs[2].slug}`
+                                }}
+                            >
+                                <Image
+                                    src={blogs[2].img}
+                                    alt={blogs[2].title || "Blog article image"}
+                                    objectFit="cover"
+                                    width={"-webkit-fill-available"}
+                                    height={"-webkit-fill-available"}
+                                />
+                            </Box>
+
+                            <Flex
+                                flex={{ md: "1 1 0%" }}
+                                flexDir={"column"}
+                                gap={4}
+                                position={"relative"}
+                            >
+                                <Flex
+                                    flexDirection={"column"}
+                                    gap={2}
+                                >
+                                    <Text fontSize={"18px"} fontWeight={600} color={"black"}>{blogs[2].title}</Text>
+                                    <Text fontSize={"16px"} fontWeight={400} height={"95px"} overflow={"hidden"} color={"rgb(123, 123, 123)"}>{blogs[2].description}</Text>
+                                </Flex>
+                                <Flex gap={3} flexWrap={"wrap"}>
+                                    {
+                                        blogs[2].tags.map(tag => (
+                                            <Badge key={tag} textTransform={"none"} px={1} fontSize={"14px"} fontWeight={"bold"} color={"primary.200"} borderRadius={"20px"} p={"3px 15px"}>{tag}</Badge>
+                                        ))
+                                    }
+                                </Flex>
+                            </Flex>
+                        </Flex>
+                    </Box>
                 </Flex>
             </Flex>
 
@@ -307,6 +386,7 @@ const Blog = () => {
                                     alt={blog.title || "Blog article image"}
                                     objectFit="cover"
                                     width={"-webkit-fill-available"}
+                                    height={"-webkit-fill-available"}
                                 />
                             </Box>
 
